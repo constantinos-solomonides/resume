@@ -1,0 +1,42 @@
+% Defines a command that allows displaying the CV in multiple languages
+\usepackage[french]{babel}
+\usepackage[autolanguage]{numprint} % for the \nombre command
+\providecommand{\multilingual}[2]{
+    \ifx\french\undefined
+        #1
+    \else
+        \if #2\empty
+            \textbf{INFORMATION MISSING. English text: ``#1'' \\}
+        \else
+            #2
+        \fi
+    \fi
+}
+
+\providecommand{\cdd}[1]{
+    \ifx\cddrequested\undefined
+        % NOP
+    \else
+        #1
+    \fi
+}
+
+\newenvironment{experiencebullets}{
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt]
+}{
+    \end{itemize}
+}
+
+% Define the header commands by default as the simple version
+\newenvironment{contactheader}{
+    \begin{center}
+}{
+    \end{center}
+}
+\newcommand{\contactentry}[1]{
+    \textbullet #1
+}
+
+\newcommand{\hrefcontactentry}[2]{
+    \textbullet \href{#1}{#2}
+}
