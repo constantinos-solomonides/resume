@@ -1,6 +1,10 @@
 % Defines a command that allows displaying the CV in multiple languages
+\usepackage[T1]{fontenc} 
 \usepackage[english, french]{babel}
-\usepackage[autolanguage]{numprint} % for the \nombre command
+\usepackage{ifthen}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
 \providecommand{\multilingual}[2]{
     \ifx\french\undefined
         #1
@@ -22,7 +26,7 @@
 }
 
 \newenvironment{experiencebullets}{
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt]
+    \begin{itemize}[label=-, noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt]
 }{
     \end{itemize}
 }
@@ -34,9 +38,17 @@
     \end{center}
 }
 \newcommand{\contactentry}[1]{
-    \textbullet #1
+    \textbullet  #1
 }
 
 \newcommand{\hrefcontactentry}[2]{
     \textbullet \href{#1}{#2}
 }
+
+\newcommand{\role}[3]{
+    \ifthenelse{\equal{#1}{#2}}{#3}{}
+}
+
+\ifx\targetrole\undefined
+    \newcommand{\targetrole}{softwarengineer}
+\fi
