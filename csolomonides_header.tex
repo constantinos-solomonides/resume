@@ -1,6 +1,8 @@
 % Defines a command that allows displaying the CV in multiple languages
 \usepackage[english, french]{babel}
 \usepackage[autolanguage]{numprint} % for the \nombre command
+\usepackage{ifthen}
+
 \providecommand{\multilingual}[2]{
     \ifx\french\undefined
         #1
@@ -33,10 +35,18 @@
 }{
     \end{center}
 }
-\newcommand{\contactentry}[1]{
-    \textbullet #1
+\newcommand{\contactentry}[2]{
+    \small{#1 #2}
 }
 
-\newcommand{\hrefcontactentry}[2]{
-    \textbullet \href{#1}{#2}
+\newcommand{\hrefcontactentry}[3]{
+    \small{#1 \href{#2}{#3}}
 }
+
+\newcommand{\role}[3]{
+    \ifthenelse{\equal{#1}{#2}}{#3}{}
+}
+
+\ifx\targetrole\undefined
+    \newcommand{\targetrole}{softwarengineer}
+\fi
