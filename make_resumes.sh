@@ -84,6 +84,7 @@ function prepare_file(){
         \\renewcommand{\\targetrole}{${role}}
         \\renewcommand{\\cvlanguage}{${language}}
         \\renewcommand{\\cddrequested}{${cdd}}
+        \\selectlanguage{english}
 END
 }
 

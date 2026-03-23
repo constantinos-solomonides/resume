@@ -1,5 +1,5 @@
 % Defines a command that allows displaying the CV in multiple languages
-\usepackage[english, french]{babel}
+\usepackage[french, english]{babel}
 \usepackage[autolanguage]{numprint} % for the \nombre command
 \usepackage{ifthen}
 \usepackage{helvet}
@@ -9,6 +9,7 @@
 \newcommand{\cddrequested}{false}
 \newcommand{\targetrole}{softwarengineer}
 \newcommand{\cvlanguage}{english}
+
 
 \providecommand{\multilingual}[2]{
     \ifthenelse{
